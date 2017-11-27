@@ -12,11 +12,21 @@ class App extends Component {
         };
     }
 
-    handleSubmission = (new_data) =>{
-        this.setState({
-            data : this.state.data.concat(new_data)
-        });
-        console.log(this.state.data);
+    handleSubmission = (username) =>{
+        let url = 'https://api.github.com/users/' + username;
+        axios.get(url).then(
+            resp => {
+                console.log(resp);
+                let new_card =  {
+                    name: resp.data.login,
+                    image: resp.data.avatar_url
+                };
+                this.setState({
+                    data : this.state.data.concat(new_card)
+                });
+            });
+
+
     }
   render() {
     return (

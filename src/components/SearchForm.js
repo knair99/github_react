@@ -7,16 +7,9 @@ class SearchForm extends Component {
     }
     handleClick = (event) =>{
         event.preventDefault();
-        let url = 'https://api.github.com/users/' + this.searchInput.value;
-        axios.get(url).then(
-            resp => {
-                console.log(resp);
-                let new_card =  {
-                    name: resp.data.login,
-                    image: resp.data.avatar_url
-                };
-                this.props.handle_submission(new_card);
-            });
+        let username = this.searchInput.value;
+        this.props.handle_submission(username);
+
     }
     render() {
         return (
