@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
-import fetchReducer from 'reducers';
+import rootReducer from 'reducers';
 
 export default (initialState) => {
-    return createStore(fetchReducer, initialState);
+    return createStore(rootReducer, initialState);
 }
