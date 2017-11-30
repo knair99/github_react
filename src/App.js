@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import CardList from "./components/CardList";
 import SearchForm from "./components/SearchForm";
-import axios from 'axios';
 
 
 class App extends Component {

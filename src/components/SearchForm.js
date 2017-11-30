@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import * as fetchActions from '../actions/add_action'
 
 class SearchForm extends Component {
     constructor(){
@@ -21,6 +24,11 @@ class SearchForm extends Component {
             });
 
     }
+
+    handleClick2 = (event) => {
+        this.props.action.addToCards(this.searchInput.value);
+    }
+
     render() {
         return (
             <div>
@@ -28,7 +36,7 @@ class SearchForm extends Component {
                     <input
                         type="text" placeholder={'Search Github user'}
                         ref={(input) => {this.searchInput = input}}/>
-                    <button onClick={this.handleClick}>Search!</button>
+                    <button onClick={this.handleClick2}>Search!</button>
                 </form>
                 
             </div>
@@ -36,6 +44,18 @@ class SearchForm extends Component {
     }
 }
 
+function mapStateToProps(state){
+    return{
+        name: state.fetchData
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        action: bindActionCreators(fetchActions, dispatch)
+    }
+}
+
 SearchForm.propTypes = {};
 
-export default SearchForm;
+export default connect(mapStateToProps, mapDispatchToProps) (SearchForm);
