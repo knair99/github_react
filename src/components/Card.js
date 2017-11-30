@@ -5,8 +5,8 @@ class Card extends Component {
     render() {
         return (
             <div>
-                <img src={this.props.image} alt="" height={50} width={50}/>
-                <div>{this.props.name}</div>
+                <img src={this.props.image} alt={this.props.name} height={50} width={50}/>
+                <h4>{this.props.name}</h4>
             </div>
         );
     }
