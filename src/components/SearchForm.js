@@ -12,21 +12,15 @@ class SearchForm extends Component {
         event.preventDefault();
         let username = this.searchInput.value;
 
-        let url = 'https://api.github.com/users/' + username;
-        axios.get(url).then(
-            resp => {
-                console.log(resp);
-                let new_card = {
-                    name: resp.data.login,
-                    image: resp.data.avatar_url
-                };
-                this.props.handle_submission(new_card);
-            });
+
 
     }
 
     handleClick2 = (event) => {
+        event.preventDefault();
         this.props.action.addToCards(this.searchInput.value);
+        console.log(this.props.data.image);
+        this.props.handle_submission(this.props.data);
     }
 
     render() {
@@ -46,7 +40,7 @@ class SearchForm extends Component {
 
 function mapStateToProps(state){
     return{
-        name: state.fetchData
+        data: state.fetchData
     }
 }
 
