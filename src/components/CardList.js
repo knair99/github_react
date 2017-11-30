@@ -9,7 +9,7 @@ class CardList extends Component {
     render() {
         return (
             <div>
-                {this.props.card_input.map(each => <Card key={each.name} {... each}/>)}
+                {this.props.card_input.map( (each, idx) => <Card key={idx} {... each}/>)}
             </div>
         );
     }

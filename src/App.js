@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import CardList from "./components/CardList";
 import SearchForm from "./components/SearchForm";
+import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import * as fetchActions from './actions/add_action'
 
 
 class App extends Component {
@@ -11,10 +14,12 @@ class App extends Component {
         };
     }
 
-    handleSubmission = (new_card) => {
-                this.setState({
-                    data : this.state.data.concat(new_card)
-                });
+    handleSubmission = (username) => {
+        this.props.action.addToCards(username);
+        console.log(this.props.stuff);
+        this.setState({
+            data : this.state.data.concat(this.props.stuff)
+        });
     }
 
   render() {
@@ -27,4 +32,18 @@ class App extends Component {
   }
 }
 
-export default App;
+
+function mapStateToProps(state){
+    return{
+        stuff: state.fetchData
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        action: bindActionCreators(fetchActions, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (App);
+
