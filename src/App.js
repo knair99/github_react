@@ -15,11 +15,13 @@ class App extends Component {
     }
 
     handleSubmission = (username) => {
-        this.props.action.addToCards(username);
-        console.log(this.props.stuff);
-        this.setState({
-            data : this.state.data.concat(this.props.stuff)
+        this.props.action.addToCards(username).then(() => {
+            this.setState({
+                data : this.state.data.concat(this.props.stuff)
+            });
         });
+        console.log(this.props.stuff);
+
     }
 
   render() {

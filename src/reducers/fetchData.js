@@ -5,8 +5,7 @@ export default (state = {
     switch(action.type){
         case 'add':
             console.log(action.data);
-            let newdata = action.data;
-            return newdata;
+            return action.data;
         default:
             return state;
     }
