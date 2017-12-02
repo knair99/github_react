@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const addStaticAction = (data) => {
+export const addToCardsSuccess = (data) => {
     return {
         type: 'add',
         data
@@ -15,7 +15,7 @@ export const addToCards = (username) => {
             response => {
                 let image = response.data.avatar_url;
                 let name = response.data.login;
-                dispatch(addStaticAction({name, image}));
+                dispatch(addToCardsSuccess({name, image}));
             }
         );
     }

@@ -4,8 +4,10 @@ export default (state = {
 }, action) => {
     switch(action.type){
         case 'add':
-            console.log(action.data);
-            return action.data;
+            console.log('Reducer: ');
+            console.log(state);
+            return [...state,
+                Object.assign({}, action.data)];
         default:
             return state;
     }

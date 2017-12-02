@@ -20,6 +20,7 @@ class App extends Component {
                 data : this.state.data.concat(this.props.stuff)
             });
         });
+        console.log('App: ')
         console.log(this.props.stuff);
 
     }

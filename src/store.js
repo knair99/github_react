@@ -3,5 +3,7 @@ import rootReducer from './reducers';
 import thunk from 'redux-thunk';
 
 export default (initialState) => {
-    return createStore(rootReducer, initialState, applyMiddleware(thunk));
+    return createStore(rootReducer,
+        initialState,
+        applyMiddleware(thunk));
 }
